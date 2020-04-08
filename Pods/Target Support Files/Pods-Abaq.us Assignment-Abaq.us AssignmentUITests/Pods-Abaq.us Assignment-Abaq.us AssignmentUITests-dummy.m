@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_Abaq_us_Assignment_Abaq_us_AssignmentUITests : NSObject
+@end
+@implementation PodsDummy_Pods_Abaq_us_Assignment_Abaq_us_AssignmentUITests
+@end

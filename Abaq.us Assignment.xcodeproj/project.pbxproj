@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48E958E02B2C0503A450BB30 /* Pods_Abaq_us_AssignmentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260A14FFBDA4B5DC82C15B32 /* Pods_Abaq_us_AssignmentTests.framework */; };
 		791BEAED243C94C4008A03B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BEAEC243C94C4008A03B2 /* AppDelegate.swift */; };
 		791BEAEF243C94C4008A03B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BEAEE243C94C4008A03B2 /* SceneDelegate.swift */; };
 		791BEAF1243C94C4008A03B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BEAF0243C94C4008A03B2 /* ViewController.swift */; };
@@ -16,6 +17,16 @@
 		791BEAFC243C94C7008A03B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 791BEAFA243C94C7008A03B2 /* LaunchScreen.storyboard */; };
 		791BEB07243C94C7008A03B2 /* Abaq_us_AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BEB06243C94C7008A03B2 /* Abaq_us_AssignmentTests.swift */; };
 		791BEB12243C94C7008A03B2 /* Abaq_us_AssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BEB11243C94C7008A03B2 /* Abaq_us_AssignmentUITests.swift */; };
+		79BD8F59243E032100EFDFAC /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F57243E032100EFDFAC /* TasksTableViewCell.swift */; };
+		79BD8F5A243E032100EFDFAC /* TasksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79BD8F58243E032100EFDFAC /* TasksTableViewCell.xib */; };
+		79BD8F60243E051C00EFDFAC /* ViewPagerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F5C243E051C00EFDFAC /* ViewPagerOptions.swift */; };
+		79BD8F61243E051C00EFDFAC /* ViewPagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F5D243E051C00EFDFAC /* ViewPagerController.swift */; };
+		79BD8F62243E051C00EFDFAC /* ViewPagerTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F5E243E051C00EFDFAC /* ViewPagerTab.swift */; };
+		79BD8F63243E051C00EFDFAC /* ViewPagerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F5F243E051C00EFDFAC /* ViewPagerTabView.swift */; };
+		79BD8F65243E072700EFDFAC /* PendingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F64243E072600EFDFAC /* PendingTableViewController.swift */; };
+		79BD8F67243E073400EFDFAC /* DoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F66243E073400EFDFAC /* DoneTableViewController.swift */; };
+		939B86DF01808C63068E33A2 /* Pods_Abaq_us_Assignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABAED23632885AB6D5BAA3B /* Pods_Abaq_us_Assignment.framework */; };
+		DE60D1CB0E2FFD6AB5A32AC6 /* Pods_Abaq_us_Assignment_Abaq_us_AssignmentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 475FFE99392538415F5EF1DF /* Pods_Abaq_us_Assignment_Abaq_us_AssignmentUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		233F35A5A93FF110BBDB7DE8 /* Pods-Abaq.us Assignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abaq.us Assignment.debug.xcconfig"; path = "Target Support Files/Pods-Abaq.us Assignment/Pods-Abaq.us Assignment.debug.xcconfig"; sourceTree = "<group>"; };
+		260A14FFBDA4B5DC82C15B32 /* Pods_Abaq_us_AssignmentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Abaq_us_AssignmentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38843610823EFD120FF7C0D5 /* Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.release.xcconfig"; path = "Target Support Files/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.release.xcconfig"; sourceTree = "<group>"; };
+		475FFE99392538415F5EF1DF /* Pods_Abaq_us_Assignment_Abaq_us_AssignmentUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Abaq_us_Assignment_Abaq_us_AssignmentUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		652FDD077964018B1C6E7A24 /* Pods-Abaq.us AssignmentTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abaq.us AssignmentTests.debug.xcconfig"; path = "Target Support Files/Pods-Abaq.us AssignmentTests/Pods-Abaq.us AssignmentTests.debug.xcconfig"; sourceTree = "<group>"; };
 		791BEAE9243C94C4008A03B2 /* Abaq.us Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Abaq.us Assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		791BEAEC243C94C4008A03B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		791BEAEE243C94C4008A03B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +67,18 @@
 		791BEB0D243C94C7008A03B2 /* Abaq.us AssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Abaq.us AssignmentUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		791BEB11243C94C7008A03B2 /* Abaq_us_AssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Abaq_us_AssignmentUITests.swift; sourceTree = "<group>"; };
 		791BEB13243C94C7008A03B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79BD8F57243E032100EFDFAC /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
+		79BD8F58243E032100EFDFAC /* TasksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TasksTableViewCell.xib; sourceTree = "<group>"; };
+		79BD8F5C243E051C00EFDFAC /* ViewPagerOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPagerOptions.swift; sourceTree = "<group>"; };
+		79BD8F5D243E051C00EFDFAC /* ViewPagerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPagerController.swift; sourceTree = "<group>"; };
+		79BD8F5E243E051C00EFDFAC /* ViewPagerTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPagerTab.swift; sourceTree = "<group>"; };
+		79BD8F5F243E051C00EFDFAC /* ViewPagerTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPagerTabView.swift; sourceTree = "<group>"; };
+		79BD8F64243E072600EFDFAC /* PendingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTableViewController.swift; sourceTree = "<group>"; };
+		79BD8F66243E073400EFDFAC /* DoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTableViewController.swift; sourceTree = "<group>"; };
+		8D46743B6B92CC6E1F7DE055 /* Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.debug.xcconfig"; path = "Target Support Files/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9AEE21585B2721D882851DAE /* Pods-Abaq.us AssignmentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abaq.us AssignmentTests.release.xcconfig"; path = "Target Support Files/Pods-Abaq.us AssignmentTests/Pods-Abaq.us AssignmentTests.release.xcconfig"; sourceTree = "<group>"; };
+		9BCB1DE35A19770BC46FF51C /* Pods-Abaq.us Assignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abaq.us Assignment.release.xcconfig"; path = "Target Support Files/Pods-Abaq.us Assignment/Pods-Abaq.us Assignment.release.xcconfig"; sourceTree = "<group>"; };
+		EABAED23632885AB6D5BAA3B /* Pods_Abaq_us_Assignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Abaq_us_Assignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939B86DF01808C63068E33A2 /* Pods_Abaq_us_Assignment.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E958E02B2C0503A450BB30 /* Pods_Abaq_us_AssignmentTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +102,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE60D1CB0E2FFD6AB5A32AC6 /* Pods_Abaq_us_Assignment_Abaq_us_AssignmentUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		036E540C57F8DD6C729521E0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				233F35A5A93FF110BBDB7DE8 /* Pods-Abaq.us Assignment.debug.xcconfig */,
+				9BCB1DE35A19770BC46FF51C /* Pods-Abaq.us Assignment.release.xcconfig */,
+				8D46743B6B92CC6E1F7DE055 /* Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.debug.xcconfig */,
+				38843610823EFD120FF7C0D5 /* Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.release.xcconfig */,
+				652FDD077964018B1C6E7A24 /* Pods-Abaq.us AssignmentTests.debug.xcconfig */,
+				9AEE21585B2721D882851DAE /* Pods-Abaq.us AssignmentTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		791BEAE0243C94C4008A03B2 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +129,8 @@
 				791BEB05243C94C7008A03B2 /* Abaq.us AssignmentTests */,
 				791BEB10243C94C7008A03B2 /* Abaq.us AssignmentUITests */,
 				791BEAEA243C94C4008A03B2 /* Products */,
+				036E540C57F8DD6C729521E0 /* Pods */,
+				D15AA8CB324469C192F87908 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +147,7 @@
 		791BEAEB243C94C4008A03B2 /* Abaq.us Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				79BD8F5B243E04FA00EFDFAC /* ViewPager */,
 				791BEAEC243C94C4008A03B2 /* AppDelegate.swift */,
 				791BEAEE243C94C4008A03B2 /* SceneDelegate.swift */,
 				791BEAF0243C94C4008A03B2 /* ViewController.swift */,
@@ -109,6 +156,10 @@
 				791BEAFA243C94C7008A03B2 /* LaunchScreen.storyboard */,
 				791BEAFD243C94C7008A03B2 /* Info.plist */,
 				791BEAF5243C94C4008A03B2 /* Abaq_us_Assignment.xcdatamodeld */,
+				79BD8F57243E032100EFDFAC /* TasksTableViewCell.swift */,
+				79BD8F58243E032100EFDFAC /* TasksTableViewCell.xib */,
+				79BD8F64243E072600EFDFAC /* PendingTableViewController.swift */,
+				79BD8F66243E073400EFDFAC /* DoneTableViewController.swift */,
 			);
 			path = "Abaq.us Assignment";
 			sourceTree = "<group>";
@@ -131,6 +182,27 @@
 			path = "Abaq.us AssignmentUITests";
 			sourceTree = "<group>";
 		};
+		79BD8F5B243E04FA00EFDFAC /* ViewPager */ = {
+			isa = PBXGroup;
+			children = (
+				79BD8F5D243E051C00EFDFAC /* ViewPagerController.swift */,
+				79BD8F5C243E051C00EFDFAC /* ViewPagerOptions.swift */,
+				79BD8F5E243E051C00EFDFAC /* ViewPagerTab.swift */,
+				79BD8F5F243E051C00EFDFAC /* ViewPagerTabView.swift */,
+			);
+			path = ViewPager;
+			sourceTree = "<group>";
+		};
+		D15AA8CB324469C192F87908 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EABAED23632885AB6D5BAA3B /* Pods_Abaq_us_Assignment.framework */,
+				475FFE99392538415F5EF1DF /* Pods_Abaq_us_Assignment_Abaq_us_AssignmentUITests.framework */,
+				260A14FFBDA4B5DC82C15B32 /* Pods_Abaq_us_AssignmentTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,9 +210,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 791BEB16243C94C7008A03B2 /* Build configuration list for PBXNativeTarget "Abaq.us Assignment" */;
 			buildPhases = (
+				F1FD329D3F36BB9D4E530039 /* [CP] Check Pods Manifest.lock */,
 				791BEAE5243C94C4008A03B2 /* Sources */,
 				791BEAE6243C94C4008A03B2 /* Frameworks */,
 				791BEAE7243C94C4008A03B2 /* Resources */,
+				D4123F9BC95373535D9CCAFC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,6 +229,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 791BEB19243C94C7008A03B2 /* Build configuration list for PBXNativeTarget "Abaq.us AssignmentTests" */;
 			buildPhases = (
+				7A0D71C082332D0EF3568AD8 /* [CP] Check Pods Manifest.lock */,
 				791BEAFE243C94C7008A03B2 /* Sources */,
 				791BEAFF243C94C7008A03B2 /* Frameworks */,
 				791BEB00243C94C7008A03B2 /* Resources */,
@@ -173,9 +248,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 791BEB1C243C94C7008A03B2 /* Build configuration list for PBXNativeTarget "Abaq.us AssignmentUITests" */;
 			buildPhases = (
+				C05DBA0C169C8B461F9F5727 /* [CP] Check Pods Manifest.lock */,
 				791BEB09243C94C7008A03B2 /* Sources */,
 				791BEB0A243C94C7008A03B2 /* Frameworks */,
 				791BEB0B243C94C7008A03B2 /* Resources */,
+				DC46B2761B807524AC2A5B0D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,6 +312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79BD8F5A243E032100EFDFAC /* TasksTableViewCell.xib in Resources */,
 				791BEAFC243C94C7008A03B2 /* LaunchScreen.storyboard in Resources */,
 				791BEAF9243C94C7008A03B2 /* Assets.xcassets in Resources */,
 				791BEAF4243C94C4008A03B2 /* Main.storyboard in Resources */,
@@ -257,15 +335,125 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7A0D71C082332D0EF3568AD8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Abaq.us AssignmentTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C05DBA0C169C8B461F9F5727 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4123F9BC95373535D9CCAFC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Abaq.us Assignment/Pods-Abaq.us Assignment-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Abaq.us Assignment/Pods-Abaq.us Assignment-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Abaq.us Assignment/Pods-Abaq.us Assignment-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC46B2761B807524AC2A5B0D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1FD329D3F36BB9D4E530039 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Abaq.us Assignment-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		791BEAE5243C94C4008A03B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				791BEAF1243C94C4008A03B2 /* ViewController.swift in Sources */,
+				79BD8F59243E032100EFDFAC /* TasksTableViewCell.swift in Sources */,
 				791BEAED243C94C4008A03B2 /* AppDelegate.swift in Sources */,
 				791BEAEF243C94C4008A03B2 /* SceneDelegate.swift in Sources */,
 				791BEAF7243C94C4008A03B2 /* Abaq_us_Assignment.xcdatamodeld in Sources */,
+				79BD8F60243E051C00EFDFAC /* ViewPagerOptions.swift in Sources */,
+				79BD8F63243E051C00EFDFAC /* ViewPagerTabView.swift in Sources */,
+				79BD8F67243E073400EFDFAC /* DoneTableViewController.swift in Sources */,
+				79BD8F62243E051C00EFDFAC /* ViewPagerTab.swift in Sources */,
+				79BD8F65243E072700EFDFAC /* PendingTableViewController.swift in Sources */,
+				79BD8F61243E051C00EFDFAC /* ViewPagerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +624,7 @@
 		};
 		791BEB17243C94C7008A03B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 233F35A5A93FF110BBDB7DE8 /* Pods-Abaq.us Assignment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -453,6 +642,7 @@
 		};
 		791BEB18243C94C7008A03B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BCB1DE35A19770BC46FF51C /* Pods-Abaq.us Assignment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -470,6 +660,7 @@
 		};
 		791BEB1A243C94C7008A03B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 652FDD077964018B1C6E7A24 /* Pods-Abaq.us AssignmentTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -491,6 +682,7 @@
 		};
 		791BEB1B243C94C7008A03B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AEE21585B2721D882851DAE /* Pods-Abaq.us AssignmentTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +704,7 @@
 		};
 		791BEB1D243C94C7008A03B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D46743B6B92CC6E1F7DE055 /* Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -531,6 +724,7 @@
 		};
 		791BEB1E243C94C7008A03B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38843610823EFD120FF7C0D5 /* Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
