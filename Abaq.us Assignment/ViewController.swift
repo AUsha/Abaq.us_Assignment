@@ -8,19 +8,24 @@
 
 import UIKit
 import XLPagerTabStrip
+import MBProgressHUD
 
 class ViewController: UIViewController {
-
+    
     var viewPager:ViewPagerController!
     var options:ViewPagerOptions!
-    var currentPageIndex: Int = 0
+    var progressBar:MBProgressHUD?
+    var pendingTasks = [String]()
+    var doneTasks = [String]()
+    var serviceLayer = ServiceLayer()
     
-     var tabs = [ViewPagerTab(title: "PENDING", image: nil), ViewPagerTab(title: "Done", image: nil)]
+    var tabs = [ViewPagerTab(title: "PENDING", image: nil), ViewPagerTab(title: "Done", image: nil)]
     
-    let pendingTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PendingTableViewController") as! PendingTableViewController
+    let pendingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PendingViewController") as! PendingViewController
     
-       var doneTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DoneTableViewController") as! DoneTableViewController
+    let doneViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DoneViewController") as! DoneViewController
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -28,25 +33,44 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = "TASKS"
         self.navigationController?.navigationBar.barTintColor = UIColor.red
         self.navigationController?.navigationBar.isTranslucent = false
-
-
-        createTabs()
+        self.showProgressIndicator()
+        self.serviceLayer.getTasksData()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registerViewModelListeners()
+        self.createTabs()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.hideProgressIndicator()
+    }
+    
+    func registerViewModelListeners() {
+        self.serviceLayer.isTasksSucceeded.bind {
+            (success) in
+            if success {
+                self.pendingTasks.append(contentsOf: self.serviceLayer.pendingTasks)
+                self.doneTasks.append(contentsOf: self.serviceLayer.doneTasks)
+            }
+        }
+        
+    }
     func createTabs() {
         
         let tabs1 = [ViewPagerTab(title: "PENDING", image: nil),
                      ViewPagerTab(title: "DONE", image: nil)]
         tabs = tabs1
         addViewPager()
-
     }
+    
     func addViewPager() {
         
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         options = ViewPagerOptions(viewPagerWithFrame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
         options.tabType = ViewPagerTabType.basic
-//        options.tabViewTextFont = Theme.font(.buttonBold)
         options.isTabHighlightAvailable = true
         options.isEachTabEvenlyDistributed = true
         options.fitAllTabsInView = true
@@ -69,17 +93,25 @@ class ViewController: UIViewController {
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
     }
+    
+    func showProgressIndicator(title:String = "") {
+        guard let window = UIApplication.shared.windows.last else { return }
+        progressBar = MBProgressHUD.showAdded(to: window, animated: true)
+        progressBar?.mode = MBProgressHUDMode.indeterminate
+        progressBar?.label.text = title
+    }
+    func hideProgressIndicator() {
+        guard let window = UIApplication.shared.windows.last else { return }
+        MBProgressHUD.hide(for: window, animated: true)
+    }
 }
 
 extension ViewController: ViewPagerControllerDelegate {
     
     func willMoveToControllerAtIndex(index:Int) {
-        print("willMoveToControllerAtIndex to page \(index)")
     }
     
     func didMoveToControllerAtIndex(index: Int) {
-        currentPageIndex = index
-        print("didMoveToControllerAtIndex to page \(index)")
     }
 }
 extension ViewController: ViewPagerControllerDataSource {
@@ -88,28 +120,17 @@ extension ViewController: ViewPagerControllerDataSource {
     }
     
     func viewControllerAtPosition(position: Int) -> UIViewController {
-        return pendingTableViewController
+        
+        if position == 0 {
+            sleep(3)
+            self.pendingViewController.pendingTasks = self.pendingTasks
+            return pendingViewController
+        }
+        self.doneViewController.doneTasks = self.doneTasks
+        return doneViewController
     }
     
     func tabsForPages() -> [ViewPagerTab] {
         return tabs
     }
-    
-    
-//    func numberOfPages() -> Int {
-//        return tabs.count
-//    }
-//
-//    func viewControllerAtPosition(position:Int) -> UIViewController {
-//        return favouritesController
-//
-//    }
-//
-//    func tabsForPages() -> [ViewPagerTab] {
-//        return tabs
-//    }
-//
-//    func startViewPagerAtIndex() -> Int {
-//        return currentPageIndex
-//    }
 }

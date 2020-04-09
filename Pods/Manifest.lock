@@ -1,16 +1,20 @@
 PODS:
+  - MBProgressHUD (1.2.0)
   - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
+  - MBProgressHUD
   - XLPagerTabStrip
 
 SPEC REPOS:
   trunk:
+    - MBProgressHUD
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 738d660a3d10998e0f61e88a9af3b60b6a81f167
+PODFILE CHECKSUM: e93dca2f9ac0329942935a561595d6dc9188be81
 
 COCOAPODS: 1.9.1

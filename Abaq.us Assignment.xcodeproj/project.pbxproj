@@ -17,14 +17,16 @@
 		791BEAFC243C94C7008A03B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 791BEAFA243C94C7008A03B2 /* LaunchScreen.storyboard */; };
 		791BEB07243C94C7008A03B2 /* Abaq_us_AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BEB06243C94C7008A03B2 /* Abaq_us_AssignmentTests.swift */; };
 		791BEB12243C94C7008A03B2 /* Abaq_us_AssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BEB11243C94C7008A03B2 /* Abaq_us_AssignmentUITests.swift */; };
-		79BD8F59243E032100EFDFAC /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F57243E032100EFDFAC /* TasksTableViewCell.swift */; };
-		79BD8F5A243E032100EFDFAC /* TasksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79BD8F58243E032100EFDFAC /* TasksTableViewCell.xib */; };
 		79BD8F60243E051C00EFDFAC /* ViewPagerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F5C243E051C00EFDFAC /* ViewPagerOptions.swift */; };
 		79BD8F61243E051C00EFDFAC /* ViewPagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F5D243E051C00EFDFAC /* ViewPagerController.swift */; };
 		79BD8F62243E051C00EFDFAC /* ViewPagerTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F5E243E051C00EFDFAC /* ViewPagerTab.swift */; };
 		79BD8F63243E051C00EFDFAC /* ViewPagerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F5F243E051C00EFDFAC /* ViewPagerTabView.swift */; };
-		79BD8F65243E072700EFDFAC /* PendingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F64243E072600EFDFAC /* PendingTableViewController.swift */; };
-		79BD8F67243E073400EFDFAC /* DoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F66243E073400EFDFAC /* DoneTableViewController.swift */; };
+		79BD8F65243E072700EFDFAC /* PendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F64243E072600EFDFAC /* PendingViewController.swift */; };
+		79BD8F67243E073400EFDFAC /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F66243E073400EFDFAC /* DoneViewController.swift */; };
+		79BD8F6B243E177400EFDFAC /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F6A243E177400EFDFAC /* ServiceLayer.swift */; };
+		79BD8F71243E181300EFDFAC /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD8F70243E181300EFDFAC /* Dynamic.swift */; };
+		79FF4607243F2738004A6320 /* PendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FF4606243F2738004A6320 /* PendingTableViewCell.swift */; };
+		79FF4609243F3B51004A6320 /* DoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FF4608243F3B51004A6320 /* DoneTableViewCell.swift */; };
 		939B86DF01808C63068E33A2 /* Pods_Abaq_us_Assignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABAED23632885AB6D5BAA3B /* Pods_Abaq_us_Assignment.framework */; };
 		DE60D1CB0E2FFD6AB5A32AC6 /* Pods_Abaq_us_Assignment_Abaq_us_AssignmentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 475FFE99392538415F5EF1DF /* Pods_Abaq_us_Assignment_Abaq_us_AssignmentUITests.framework */; };
 /* End PBXBuildFile section */
@@ -67,14 +69,16 @@
 		791BEB0D243C94C7008A03B2 /* Abaq.us AssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Abaq.us AssignmentUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		791BEB11243C94C7008A03B2 /* Abaq_us_AssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Abaq_us_AssignmentUITests.swift; sourceTree = "<group>"; };
 		791BEB13243C94C7008A03B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		79BD8F57243E032100EFDFAC /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
-		79BD8F58243E032100EFDFAC /* TasksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TasksTableViewCell.xib; sourceTree = "<group>"; };
 		79BD8F5C243E051C00EFDFAC /* ViewPagerOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPagerOptions.swift; sourceTree = "<group>"; };
 		79BD8F5D243E051C00EFDFAC /* ViewPagerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPagerController.swift; sourceTree = "<group>"; };
 		79BD8F5E243E051C00EFDFAC /* ViewPagerTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPagerTab.swift; sourceTree = "<group>"; };
 		79BD8F5F243E051C00EFDFAC /* ViewPagerTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPagerTabView.swift; sourceTree = "<group>"; };
-		79BD8F64243E072600EFDFAC /* PendingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTableViewController.swift; sourceTree = "<group>"; };
-		79BD8F66243E073400EFDFAC /* DoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTableViewController.swift; sourceTree = "<group>"; };
+		79BD8F64243E072600EFDFAC /* PendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingViewController.swift; sourceTree = "<group>"; };
+		79BD8F66243E073400EFDFAC /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
+		79BD8F6A243E177400EFDFAC /* ServiceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayer.swift; sourceTree = "<group>"; };
+		79BD8F70243E181300EFDFAC /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		79FF4606243F2738004A6320 /* PendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTableViewCell.swift; sourceTree = "<group>"; };
+		79FF4608243F3B51004A6320 /* DoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTableViewCell.swift; sourceTree = "<group>"; };
 		8D46743B6B92CC6E1F7DE055 /* Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.debug.xcconfig"; path = "Target Support Files/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests/Pods-Abaq.us Assignment-Abaq.us AssignmentUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9AEE21585B2721D882851DAE /* Pods-Abaq.us AssignmentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abaq.us AssignmentTests.release.xcconfig"; path = "Target Support Files/Pods-Abaq.us AssignmentTests/Pods-Abaq.us AssignmentTests.release.xcconfig"; sourceTree = "<group>"; };
 		9BCB1DE35A19770BC46FF51C /* Pods-Abaq.us Assignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abaq.us Assignment.release.xcconfig"; path = "Target Support Files/Pods-Abaq.us Assignment/Pods-Abaq.us Assignment.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,16 +154,18 @@
 				79BD8F5B243E04FA00EFDFAC /* ViewPager */,
 				791BEAEC243C94C4008A03B2 /* AppDelegate.swift */,
 				791BEAEE243C94C4008A03B2 /* SceneDelegate.swift */,
-				791BEAF0243C94C4008A03B2 /* ViewController.swift */,
 				791BEAF2243C94C4008A03B2 /* Main.storyboard */,
 				791BEAF8243C94C7008A03B2 /* Assets.xcassets */,
 				791BEAFA243C94C7008A03B2 /* LaunchScreen.storyboard */,
+				791BEAF0243C94C4008A03B2 /* ViewController.swift */,
+				79BD8F64243E072600EFDFAC /* PendingViewController.swift */,
+				79FF4606243F2738004A6320 /* PendingTableViewCell.swift */,
+				79BD8F66243E073400EFDFAC /* DoneViewController.swift */,
+				79FF4608243F3B51004A6320 /* DoneTableViewCell.swift */,
 				791BEAFD243C94C7008A03B2 /* Info.plist */,
 				791BEAF5243C94C4008A03B2 /* Abaq_us_Assignment.xcdatamodeld */,
-				79BD8F57243E032100EFDFAC /* TasksTableViewCell.swift */,
-				79BD8F58243E032100EFDFAC /* TasksTableViewCell.xib */,
-				79BD8F64243E072600EFDFAC /* PendingTableViewController.swift */,
-				79BD8F66243E073400EFDFAC /* DoneTableViewController.swift */,
+				79BD8F6A243E177400EFDFAC /* ServiceLayer.swift */,
+				79BD8F70243E181300EFDFAC /* Dynamic.swift */,
 			);
 			path = "Abaq.us Assignment";
 			sourceTree = "<group>";
@@ -312,7 +318,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79BD8F5A243E032100EFDFAC /* TasksTableViewCell.xib in Resources */,
 				791BEAFC243C94C7008A03B2 /* LaunchScreen.storyboard in Resources */,
 				791BEAF9243C94C7008A03B2 /* Assets.xcassets in Resources */,
 				791BEAF4243C94C4008A03B2 /* Main.storyboard in Resources */,
@@ -444,15 +449,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				791BEAF1243C94C4008A03B2 /* ViewController.swift in Sources */,
-				79BD8F59243E032100EFDFAC /* TasksTableViewCell.swift in Sources */,
+				79BD8F6B243E177400EFDFAC /* ServiceLayer.swift in Sources */,
 				791BEAED243C94C4008A03B2 /* AppDelegate.swift in Sources */,
 				791BEAEF243C94C4008A03B2 /* SceneDelegate.swift in Sources */,
 				791BEAF7243C94C4008A03B2 /* Abaq_us_Assignment.xcdatamodeld in Sources */,
+				79BD8F71243E181300EFDFAC /* Dynamic.swift in Sources */,
 				79BD8F60243E051C00EFDFAC /* ViewPagerOptions.swift in Sources */,
 				79BD8F63243E051C00EFDFAC /* ViewPagerTabView.swift in Sources */,
-				79BD8F67243E073400EFDFAC /* DoneTableViewController.swift in Sources */,
+				79BD8F67243E073400EFDFAC /* DoneViewController.swift in Sources */,
 				79BD8F62243E051C00EFDFAC /* ViewPagerTab.swift in Sources */,
-				79BD8F65243E072700EFDFAC /* PendingTableViewController.swift in Sources */,
+				79FF4609243F3B51004A6320 /* DoneTableViewCell.swift in Sources */,
+				79BD8F65243E072700EFDFAC /* PendingViewController.swift in Sources */,
+				79FF4607243F2738004A6320 /* PendingTableViewCell.swift in Sources */,
 				79BD8F61243E051C00EFDFAC /* ViewPagerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
