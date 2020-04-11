@@ -8,16 +8,20 @@
 
 import UIKit
 
+protocol AddDelegate {
+    func didPressSearchButton(button: Any)
+}
+
 class PendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
     var pendingTasks = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView.init(frame: CGRect.zero)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
