@@ -8,6 +8,8 @@ target 'Abaq.us Assignment' do
   # Pods for Abaq.us Assignment
 pod 'XLPagerTabStrip'
 pod 'MBProgressHUD'
+pod 'ObjectMapper'
+
 
   target 'Abaq.us AssignmentTests' do
     inherit! :search_paths

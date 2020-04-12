@@ -15,12 +15,17 @@ protocol AddDelegate {
 class PendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
-    var pendingTasks = [String]()
+    var pendingTasks: [TaskModel] = []
+    var stateChangeInTasks: [TaskModel] = []
+    var timerCount = 5.0
+    
+    var tasksStateChange : ((_ changedIds: [TaskModel]?) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.autoresizingMask = .flexibleBottomMargin
         tableView.tableFooterView = UIView.init(frame: CGRect.zero)
     }
     
@@ -43,7 +48,33 @@ class PendingViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: PendingTableViewCell.identifier, for: indexPath)  as! PendingTableViewCell
-            cell.titleLabel.text = self.pendingTasks[indexPath.row]
+        let data = pendingTasks[indexPath.row]
+        cell.titleLabel.text = data.title
+        if self.stateChangeInTasks.contains(pendingTasks[indexPath.row]) {
+            cell.cancelButton.isHidden = false
+        }
+        else {
+            cell.cancelButton.isHidden = true
+        }
+        
+        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? PendingTableViewCell {
+            cell.cancelButton.isHidden = false
+            Helpers.sharedInstance.cancelButtonClicked = false
+            Timer.scheduledTimer(withTimeInterval: timerCount, repeats: false, block: {_ in
+                cell.cancelButton.isHidden = true
+                if Helpers.sharedInstance.cancelButtonClicked == false {
+                    self.stateChangeInTasks.append(self.pendingTasks[indexPath.row])
+                    if let selected = self.tasksStateChange {
+                        selected(self.stateChangeInTasks)
+                    }
+                }
+            })
+        }
+    }
 }
+

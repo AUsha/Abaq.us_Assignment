@@ -1,20 +1,24 @@
 PODS:
   - MBProgressHUD (1.2.0)
+  - ObjectMapper (3.5.2)
   - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
   - MBProgressHUD
+  - ObjectMapper
   - XLPagerTabStrip
 
 SPEC REPOS:
   trunk:
     - MBProgressHUD
+    - ObjectMapper
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  ObjectMapper: b53ae947d370bf89423e86be7d4e2d2b2a8d3f40
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: e93dca2f9ac0329942935a561595d6dc9188be81
+PODFILE CHECKSUM: 133c8c14608214f7014f0cf73c9a8cf03292eca5
 
 COCOAPODS: 1.9.1

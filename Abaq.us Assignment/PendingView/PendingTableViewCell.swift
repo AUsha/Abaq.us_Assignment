@@ -11,6 +11,11 @@ import UIKit
 class PendingTableViewCell: UITableViewCell {
     
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var cancelButton: UIButton!
+    
+    var cancelButtonCallback: (() -> Void)?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +28,9 @@ class PendingTableViewCell: UITableViewCell {
     }
     static var identifier: String {
         return String(describing: self)
+    }
+    @IBAction func cancelButtonAction(_ sender: Any) {
+        self.cancelButton.isHidden = true
+        Helpers.sharedInstance.cancelButtonClicked = true
     }
 }

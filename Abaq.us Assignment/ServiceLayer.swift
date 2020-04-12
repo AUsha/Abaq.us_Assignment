@@ -8,46 +8,26 @@
 
 import Foundation
 import MBProgressHUD
+import ObjectMapper
 
 class ServiceLayer {
     
-    var isTasksSucceeded: Dynamic<Bool> = Dynamic(false)
-    var pendingTasks = [String]()
-    var doneTasks = [String]()
-    var progressBar:MBProgressHUD?
+    static let sharedInstance = ServiceLayer()
     
-    func getTasksData() {
+    func getTasksData(callback:@escaping (_ result: [TaskModel]?, _ error:Error?) -> Void) {
         let url = URL(string: "https://my-json-server.typicode.com/karthikraj-duraisamy/todoendpoint/tasks")
         URLSession.shared.dataTask(with: url!, completionHandler: {
             (data, response, error) in
             if(error != nil){
                 print("error")
-                self.isTasksSucceeded.value = false
+                callback(nil,error)
             }else{
-                do{
-                    
-                    if let json = try! JSONSerialization.jsonObject(with: data!, options: []) as? [[String:Any]] {
-                        for data in json {
-                            if let tasks = data["state"] as? Int{
-                                if tasks == 1 {
-                                    if let title = data["task"] as? String {
-                                        self.pendingTasks.append(title)
-                                    }
-                                }
-                                else if let title = data["task"] as? String {
-                                    self.doneTasks.append(title)
-                                }
-                            }
-                        }
-                        self.isTasksSucceeded.value = true
-                    }
+                if let json = try! JSONSerialization.jsonObject(with: data!, options: []) as? [[String:Any]] {
+                    let taskResult = Mapper<TaskModel>().mapArray(JSONArray: json)
+                    callback(taskResult,nil)
                 }
+                callback(nil, error)
             }
         }).resume()
-    }
-    
-    func hideProgressIndicator() {
-        guard let window = UIApplication.shared.windows.last else { return }
-        MBProgressHUD.hide(for: window, animated: true)
     }
 }

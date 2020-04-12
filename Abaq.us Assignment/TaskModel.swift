@@ -7,3 +7,26 @@
 //
 
 import Foundation
+import ObjectMapper
+
+class TaskModel : NSObject, Mappable {
+    
+    var title: String?
+    var status: Int?
+    var id: Int?
+
+    override init() {
+        super.init()
+    }
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        title <- map["task"]
+        status <- map["state"]
+        id <- map["id"]
+    }
+
+}

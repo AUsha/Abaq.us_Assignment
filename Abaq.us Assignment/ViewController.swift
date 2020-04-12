@@ -15,9 +15,14 @@ class ViewController: UIViewController {
     var viewPager:ViewPagerController!
     var options:ViewPagerOptions!
     var progressBar:MBProgressHUD?
-    var pendingTasks = [String]()
-    var doneTasks = [String]()
-    var serviceLayer = ServiceLayer()
+    var pendingTasks = [TaskModel]()
+    var doneTasks = [TaskModel]()
+    var deletedDoneTasks = [TaskModel]()
+    
+    var taskViewModel = TasksViewModel()
+    
+    let colorString = "#0091D0"
+    
     
     var tabs = [ViewPagerTab(title: "PENDING", image: nil), ViewPagerTab(title: "Done", image: nil)]
     
@@ -25,22 +30,74 @@ class ViewController: UIViewController {
     
     let doneViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DoneViewController") as! DoneViewController
     
-   
+    let addView = Bundle.main.loadNibNamed(AddTaskView.nibName(), owner: AddTaskView(), options: nil)?.first as! AddTaskView
+    var transparentView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         self.navigationController?.navigationBar.topItem?.title = "TASKS"
-        self.navigationController?.navigationBar.barTintColor = UIColor.red
+        navigationController?.navigationBar.barTintColor =  UIColor(hexString: "#F5B041")
         self.navigationController?.navigationBar.isTranslucent = false
         self.showProgressIndicator()
-        self.serviceLayer.getTasksData()
+        self.taskViewModel.getTasksData()
+        registerViewModelListeners()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        registerViewModelListeners()
-        self.createTabs()
+        self.doneViewController.deleteCell = {
+            selectedJobIds in
+            self.deletedDoneTasks.removeAll()
+            if let deletedIds = selectedJobIds {
+                self.deletedDoneTasks.append(contentsOf: deletedIds)
+            }
+            if self.deletedDoneTasks.count != 0 {
+                self.deleteButtonNavItem()
+            }
+            else {
+                self.hideNavItems()
+            }
+        }
+        
+        self.doneViewController.resumeCell = {
+            unSelectedJobIds in
+            if let deletedIds = unSelectedJobIds {
+                self.deletedDoneTasks.removeAll(where: {deletedIds.contains($0)})
+            }
+            if self.deletedDoneTasks.count != 0 {
+                self.deleteButtonNavItem()
+            }
+            else {
+                self.hideNavItems()
+            }
+        }
+        self.pendingViewController.tasksStateChange = {
+            changeIds in
+            if let deletedIds = changeIds {
+                self.pendingTasks.removeAll(where: {deletedIds.contains($0)})
+                self.doneTasks.append(contentsOf: deletedIds)
+                self.updatePendingTasks()
+            }
+        }
+        self.doneViewController.tasksStateChange = {
+            changeIds in
+            if let deletedIds = changeIds {
+                self.doneTasks.removeAll(where: {deletedIds.contains($0)})
+                self.pendingTasks.append(contentsOf: deletedIds)
+                self.updatePendingTasks()
+            }
+        }
+    }
+    
+    func updatePendingTasks() {
+        self.pendingViewController.pendingTasks = self.pendingTasks
+        self.pendingViewController.tableView.reloadData()
+        if self.doneViewController.tableView != nil {
+            self.doneViewController.doneTasks = self.doneTasks
+            self.doneViewController.tableView.reloadData()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -49,11 +106,22 @@ class ViewController: UIViewController {
     }
     
     func registerViewModelListeners() {
-        self.serviceLayer.isTasksSucceeded.bind {
+        self.taskViewModel.isTasksSucceeded.bind {
             (success) in
             if success {
-                self.pendingTasks.append(contentsOf: self.serviceLayer.pendingTasks)
-                self.doneTasks.append(contentsOf: self.serviceLayer.doneTasks)
+                if let tasks = self.taskViewModel.taskModel{
+                    for tasks in tasks {
+                        if tasks.status == 1 {
+                            self.doneTasks.append(tasks)
+                        }
+                        else {
+                            self.pendingTasks.append(tasks)
+                        }
+                        
+                    }
+                    self.hideProgressIndicator()
+                    
+                }
             }
         }
         
@@ -66,6 +134,53 @@ class ViewController: UIViewController {
         addViewPager()
     }
     
+    func addButtonNavItem() {
+        let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTaskView))
+        navigationItem.rightBarButtonItem = addBarButton
+    }
+    
+    func deleteButtonNavItem() {
+        let addBarButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteDoneItems))
+        navigationItem.rightBarButtonItem = addBarButton
+    }
+    
+    @objc func deleteDoneItems() {
+        self.doneTasks.removeAll(where: { self.deletedDoneTasks.contains($0) })
+        self.hideUnhideDoneTableView()
+        self.doneViewController.doneTasks = self.doneTasks
+        if self.deletedDoneTasks.count == 0 {
+            self.deletedDoneTasks.removeAll()
+            self.doneViewController.matchesSelectedJobs.removeAll()
+
+            self.hideNavItems()
+        }
+        self.doneViewController.tableView.reloadData()
+    }
+    
+    func hideNavItems() {
+        navigationItem.rightBarButtonItems?.removeAll()
+    }
+    
+    func hideUnhideDoneTableView() {
+        if self.doneViewController.doneTasks.count == 0 {
+            self.doneViewController.tableView.isHidden = true
+            self.doneViewController.noTasksLabel.isHidden = false
+        }
+    }
+    @objc func addTaskView() {
+        guard let window = UIApplication.shared.windows.last else { return }
+        transparentView = UIView(frame: CGRect(x: 0, y: 0, width: window.frame.size.width, height: window.frame.size.height))
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        
+        addView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 400)
+        addView.delegate = self
+        addView.titleTexTField.text = ""
+        
+        transparentView.addSubview(addView)
+        window.addSubview(transparentView)
+    }
+    
+    
     func addViewPager() {
         
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
@@ -75,10 +190,11 @@ class ViewController: UIViewController {
         options.isEachTabEvenlyDistributed = true
         options.fitAllTabsInView = true
         options.tabViewTextHighlightColor = UIColor.white
+        options.tabViewTextFont = UIFont.boldSystemFont(ofSize: 18)
         options.tabViewTextDefaultColor =  UIColor.white
         options.tabIndicatorViewBackgroundColor = UIColor.white
-        options.tabViewBackgroundDefaultColor = UIColor.red
-        options.tabViewBackgroundHighlightColor = UIColor.red
+        options.tabViewBackgroundDefaultColor = UIColor(hexString: "#F39C12")
+        options.tabViewBackgroundHighlightColor = UIColor(hexString: "#F39C12")
         options.tabIndicatorViewHeight = 4
         
         viewPager = ViewPagerController()
@@ -101,17 +217,32 @@ class ViewController: UIViewController {
         progressBar?.label.text = title
     }
     func hideProgressIndicator() {
-        guard let window = UIApplication.shared.windows.last else { return }
-        MBProgressHUD.hide(for: window, animated: true)
+        DispatchQueue.main.async {
+            self.progressBar?.hide(animated: true)
+            self.createTabs()
+            
+        }
     }
 }
 
 extension ViewController: ViewPagerControllerDelegate {
     
     func willMoveToControllerAtIndex(index:Int) {
+        if index == 0{
+            addButtonNavItem()
+        }
+        else {
+            if self.deletedDoneTasks.count == 0 {
+                self.hideNavItems()
+            }
+            else {
+                deleteButtonNavItem()
+            }
+        }
     }
     
     func didMoveToControllerAtIndex(index: Int) {
+        
     }
 }
 extension ViewController: ViewPagerControllerDataSource {
@@ -120,13 +251,20 @@ extension ViewController: ViewPagerControllerDataSource {
     }
     
     func viewControllerAtPosition(position: Int) -> UIViewController {
-        
         if position == 0 {
             sleep(3)
+            addButtonNavItem()
             self.pendingViewController.pendingTasks = self.pendingTasks
             return pendingViewController
         }
+        if self.deletedDoneTasks.count == 0 {
+            self.hideNavItems()
+        }
+        else {
+            deleteButtonNavItem()
+        }
         self.doneViewController.doneTasks = self.doneTasks
+        self.hideUnhideDoneTableView()
         return doneViewController
     }
     
@@ -134,3 +272,13 @@ extension ViewController: ViewPagerControllerDataSource {
         return tabs
     }
 }
+extension ViewController: AddTaskViewProtocol {
+    func addTasks() {
+        transparentView.removeFromSuperview()
+        let post = TaskModel()
+        post.title = self.addView.titleTexTField.text
+        self.pendingViewController.pendingTasks.append(post)
+        self.pendingViewController.tableView.reloadData()
+    }
+}
+

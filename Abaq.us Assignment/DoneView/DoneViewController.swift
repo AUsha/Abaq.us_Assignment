@@ -8,18 +8,42 @@
 
 import UIKit
 
-class DoneViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DoneViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate {
     
+    @IBOutlet var noTasksLabel: UILabel!
     @IBOutlet var tableView: UITableView!
-    var doneTasks = [String]()
-    var deleteCell: (() -> ())?
+    
+    var doneTasks: [TaskModel] = []
+    
+    var deleteCell : ((_ deletedIds: [TaskModel]?) -> Void)?
+    var resumeCell : ((_ deletedIds: [TaskModel]?) -> Void)?
 
+    
+    var matchesSelectedJobs: [TaskModel] = []
+    
+    var stateChangeInTasks: [TaskModel] = []
+    var timerCount = 5.0
+    
+    var tasksStateChange : ((_ changedIds: [TaskModel]?) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.autoresizingMask = .flexibleBottomMargin
         tableView.tableFooterView = UIView.init(frame: CGRect.zero)
         tableView.allowsMultipleSelection = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.doneTasks.count == 0 {
+            self.tableView.isHidden = true
+            self.noTasksLabel.isHidden = false
+            
+        }
+        self.tableView.isHidden = false
+        self.noTasksLabel.isHidden = true        
     }
     
     // MARK: - Table view data source
@@ -34,32 +58,63 @@ class DoneViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DoneTableViewCell.identifier, for: indexPath)  as! DoneTableViewCell
-        cell.titleLabel.text = doneTasks[indexPath.row]
-//        let holdToDelete = UILongPressGestureRecognizer(target: self, action: "longPressDelete:")
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-
-        if let _ = deleteCell {
-            cell.addGestureRecognizer(tap)
-            self.tableView.allowsSelection = true
+        let tasks = doneTasks[indexPath.row]
+        cell.bindJobData(task: tasks)
+        
+        if self.stateChangeInTasks.contains(doneTasks[indexPath.row]) {
+                cell.cancelButton.isHidden = false
+            }
+            else {
+                cell.cancelButton.isHidden = true
+            }
+        
+        
+        cell.checkBoxSelected(checked: false)
+        if let id = tasks.id {
+            if self.matchesSelectedJobs.contains(where: {($0.id == id)}) {
+                cell.checkBoxSelected(checked: true)
+            }
+        }
+        //Check Buttons callback
+        cell.checkButtonCallback = {
+            if let selected = self.deleteCell {
+                self.matchesSelectedJobs.append(self.doneTasks[indexPath.row])
+                selected(self.matchesSelectedJobs)
+                
+            }
+        }
+        cell.unCheckButtonCallback = {
+            if let selected = self.resumeCell {
+                let modifiedArray = self.matchesSelectedJobs.filter { $0 == self.doneTasks[indexPath.row] }
+                self.matchesSelectedJobs = modifiedArray
+                selected(self.matchesSelectedJobs)
+                
+            }
         }
         return cell
     }
     
-    @objc func handleTap(_ sender: UILongPressGestureRecognizer) {
-
-       print("Long tap")
-        self.deleteButtonNavItem()
-//       let longPress = sender as UILongPressGestureRecognizer
-//       _ = longPress.state
-//        let locationInView = longPress.location(in: self.tableView)
-//        guard let indexPath = self.tableView.indexPathForRow(at: locationInView) else { return }
-//        self.tableView.deleteRows(at: [indexPath], with: .fade)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? DoneTableViewCell {
+            cell.cancelButton.isHidden = false
+            Helpers.sharedInstance.cancelButtonClicked = false
+            Timer.scheduledTimer(withTimeInterval: timerCount, repeats: false, block: {_ in
+                if Helpers.sharedInstance.cancelButtonClicked == false {
+                    cell.cancelButton.isHidden = true
+                    self.stateChangeInTasks.append(self.doneTasks[indexPath.row])
+                    if let selected = self.tasksStateChange {
+                        selected(self.stateChangeInTasks)
+                    }
+                }
+            })
+        }
     }
     
-    
-   func deleteButtonNavItem() {
-         let addBarButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: nil)
-         navigationItem.rightBarButtonItem = addBarButton
-     }
-    
+    func updateSelectedJobs(_ tasks: TaskModel) -> Bool {
+        if self.doneTasks.contains(tasks) {
+            self.matchesSelectedJobs.append(tasks)
+            return true
+        }
+        return false
+    }
 }
